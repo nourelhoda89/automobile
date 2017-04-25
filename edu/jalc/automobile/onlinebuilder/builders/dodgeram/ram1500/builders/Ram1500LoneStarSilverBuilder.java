@@ -33,7 +33,7 @@ import edu.jalc.automobile.parts.body.Cabin;
 import edu.jalc.automobile.parts.suspension.*;
 import edu.jalc.automobile.parts.driveline.*;
 
-public class Ram1500LaramieBuilder implements TruckDodgeRamBuilderInterface{
+public class Ram1500LoneStarSilverBuilder implements TruckDodgeRamBuilderInterface{
 
   EngineAssembly engine;
   Body body;
@@ -73,7 +73,6 @@ public class Ram1500LaramieBuilder implements TruckDodgeRamBuilderInterface{
       cabAndBedChoice = cabAndBedPrompter.addType("Cab And Box")
         .addOption(new RamTruckCabAndBed(5.7, "Crew"))
         .addOption(new RamTruckCabAndBed(6.4, "Crew"))
-        .addOption(new RamTruckCabAndBed(6.4, "Quad"))
         .sort()
         .build()
         .ask();
@@ -135,7 +134,7 @@ public class Ram1500LaramieBuilder implements TruckDodgeRamBuilderInterface{
      int choice = 1 ;
      paintPrompter.addType("Paint")
       .addOption(new BlackForestGreenPearl())
-      .addOption(new BrightWhiteClearCoat())
+      .addOption(new FlameRedClearCoat())
       .addOption(new MaximumSteelMetallicClearCoat())
       .addOption(new BrilliantBlackCrystalPearl())
       .sort();
@@ -152,8 +151,8 @@ public class Ram1500LaramieBuilder implements TruckDodgeRamBuilderInterface{
       int seatChoice = 2;
       try{
         seatChoice = seatPrompter.addType("Seats")
-          .addOption(new LeatherTrimmedBenchSeat())
-          .addOption(new LeatherTrimmedBucketSeat())
+          .addOption(new BucketClothSeat())
+          .addOption(new PremiumBenchClothSeat())
           .build()
           .ask();
       }
@@ -185,7 +184,6 @@ public class Ram1500LaramieBuilder implements TruckDodgeRamBuilderInterface{
          TerminalPrompterBuilder tirePrompter = TerminalPrompterBuilder.newBuilder();
          int tireChoice = tirePrompter.addType("Tires")
             .addOption(new BSWAllSeasonTire("P275/60R20"))
-            .addOption(new OWLAllSeasonTire("P275/60R20"))
             .build()
             .ask();
          tire = (TruckTire)tirePrompter.getOptions().get(tireChoice - 1);
@@ -220,12 +218,12 @@ public class Ram1500LaramieBuilder implements TruckDodgeRamBuilderInterface{
           new LockingDifferential());
       }
 
-      return new Automobile("Ram ","1500 ","Laramie ",body,driveLine,engine,suspension);
+      return new Automobile("Ram ","1500 ","LoneStarSilver ",body,driveLine,engine,suspension);
    }
 
    public static void main(String... args){
 
-      Automobile ram1500laramie = new Ram1500LaramieBuilder()
+      Automobile ram1500LoneStarSilver = new Ram1500LoneStarSilverBuilder()
          .askForTruckDrive()
          .askForTruckCabAndBed()
          .askForPowerTrain()
@@ -234,6 +232,6 @@ public class Ram1500LaramieBuilder implements TruckDodgeRamBuilderInterface{
          .askForPackages()
          .build();
 
-      System.out.println(ram1500laramie);
+      System.out.println(ram1500LoneStarSilver);
    }
 }
